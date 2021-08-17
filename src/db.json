@@ -1,0 +1,800 @@
+{
+  "UPS": {
+    "companyName": "UPS",
+    "totalDeliveries": 842,
+    "shippingByDayOfWeek": [
+      20,
+      76,
+      53,
+      43,
+      56,
+      46,
+      65
+    ],
+    "priceByDayOfWeek": [
+      9004,
+      5833,
+      5436,
+      4235,
+      5432,
+      6543,
+      6544
+    ],
+    "shippingByDate": [
+      {
+        "date": 1,
+        "count": 54
+      },
+      {
+        "date": 2,
+        "count": 23
+      },
+      {
+        "date": 3,
+        "count": 26
+      },
+      {
+        "date": 4,
+        "count": 65
+      },
+      {
+        "date": 5,
+        "count": 34
+      },
+      {
+        "date": 6,
+        "count": 76
+      },
+      {
+        "date": 7,
+        "count": 64
+      },
+      {
+        "date": 8,
+        "count": 23
+      },
+      {
+        "date": 9,
+        "count": 54
+      },
+      {
+        "date": 10,
+        "count": 23
+      },
+      {
+        "date": 11,
+        "count": 54
+      },
+      {
+        "date": 12,
+        "count": 76
+      },
+      {
+        "date": 13,
+        "count": 23
+      },
+      {
+        "date": 14,
+        "count": 64
+      },
+      {
+        "date": 15,
+        "count": 54
+      },
+      {
+        "date": 16,
+        "count": 76
+      },
+      {
+        "date": 17,
+        "count": 98
+      },
+      {
+        "date": 18,
+        "count": 23
+      },
+      {
+        "date": 19,
+        "count": 54
+      },
+      {
+        "date": 20,
+        "count": 23
+      },
+      {
+        "date": 21,
+        "count": 12
+      },
+      {
+        "date": 22,
+        "count": 23
+      },
+      {
+        "date": 23,
+        "count": 55
+      },
+      {
+        "date": 24,
+        "count": 31
+      },
+      {
+        "date": 25,
+        "count": 54
+      },
+      {
+        "date": 26,
+        "count": 54
+      },
+      {
+        "date": 27,
+        "count": 16
+      },
+      {
+        "date": 28,
+        "count": 43
+      },
+      {
+        "date": 29,
+        "count": 12
+      },
+      {
+        "date": 30,
+        "count": 14
+      }
+    ],
+    "shippingByPostalCode": [
+      {
+        "postalCode": 1,
+        "count": 54
+      },
+      {
+        "postalCode": 2,
+        "count": 23
+      },
+      {
+        "postalCode": 3,
+        "count": 26
+      },
+      {
+        "postalCode": 4,
+        "count": 65
+      },
+      {
+        "postalCode": 5,
+        "count": 34
+      },
+      {
+        "postalCode": 6,
+        "count": 76
+      },
+      {
+        "postalCode": 7,
+        "count": 64
+      },
+      {
+        "postalCode": 8,
+        "count": 23
+      },
+      {
+        "postalCode": 9,
+        "count": 54
+      },
+      {
+        "postalCode": 10,
+        "count": 23
+      },
+      {
+        "postalCode": 11,
+        "count": 54
+      },
+      {
+        "postalCode": 12,
+        "count": 76
+      },
+      {
+        "postalCode": 13,
+        "count": 23
+      },
+      {
+        "postalCode": 14,
+        "count": 64
+      },
+      {
+        "postalCode": 15,
+        "count": 54
+      },
+      {
+        "postalCode": 16,
+        "count": 76
+      },
+      {
+        "postalCode": 1007,
+        "count": 98
+      }
+    ],
+    "averageShippingTimeByDestination": [
+      {
+        "destination": "Bridge",
+        "count": 77
+      },
+      {
+        "destination": "Tel aviv",
+        "count": 23
+      },
+      {
+        "destination": "Sons of zion",
+        "count": 23
+      },
+      {
+        "destination": "Mount lentils",
+        "count": 43
+      },
+      {
+        "destination": "Garden of candelas",
+        "count": 34
+      },
+      {
+        "destination": "Information",
+        "count": 54
+      }
+    ],
+    "averagePaymentByLocation": [
+      {
+        "destination": "Bridge",
+        "payment": 77
+      },
+      {
+        "destination": "Tel aviv",
+        "payment": 23
+      },
+      {
+        "destination": "Sons of zion",
+        "payment": 23
+      },
+      {
+        "destination": "Mount lentils",
+        "payment": 43
+      },
+      {
+        "destination": "Garden of candelas",
+        "payment": 34
+      },
+      {
+        "destination": "Information",
+        "payment": 54
+      }
+    ]
+  },
+  "DHL": {
+    "companyName": "DHL",
+    "totalDeliveries": 1023,
+    "shippingByDayOfWeek": [
+      30,
+      56,
+      34,
+      73,
+      50,
+      42,
+      72
+    ],
+    "priceByDayOfWeek": [
+      9004,
+      5833,
+      5436,
+      4235,
+      5432,
+      6543,
+      6544
+    ],
+    "shippingByDate": [
+      {
+        "date": 1,
+        "count": 23
+      },
+      {
+        "date": 2,
+        "count": 43
+      },
+      {
+        "date": 3,
+        "count": 54
+      },
+      {
+        "date": 4,
+        "count": 56
+      },
+      {
+        "date": 5,
+        "count": 65
+      },
+      {
+        "date": 6,
+        "count": 45
+      },
+      {
+        "date": 7,
+        "count": 87
+      },
+      {
+        "date": 8,
+        "count": 67
+      },
+      {
+        "date": 9,
+        "count": 87
+      },
+      {
+        "date": 10,
+        "count": 35
+      },
+      {
+        "date": 11,
+        "count": 65
+      },
+      {
+        "date": 12,
+        "count": 23
+      },
+      {
+        "date": 13,
+        "count": 89
+      },
+      {
+        "date": 14,
+        "count": 23
+      },
+      {
+        "date": 15,
+        "count": 54
+      },
+      {
+        "date": 16,
+        "count": 23
+      },
+      {
+        "date": 17,
+        "count": 98
+      },
+      {
+        "date": 18,
+        "count": 56
+      },
+      {
+        "date": 19,
+        "count": 43
+      },
+      {
+        "date": 20,
+        "count": 32
+      },
+      {
+        "date": 21,
+        "count": 23
+      },
+      {
+        "date": 22,
+        "count": 12
+      },
+      {
+        "date": 23,
+        "count": 43
+      },
+      {
+        "date": 24,
+        "count": 32
+      },
+      {
+        "date": 25,
+        "count": 23
+      },
+      {
+        "date": 26,
+        "count": 23
+      },
+      {
+        "date": 27,
+        "count": 54
+      },
+      {
+        "date": 28,
+        "count": 47
+      },
+      {
+        "date": 29,
+        "count": 43
+      },
+      {
+        "date": 30,
+        "count": 65
+      }
+    ],
+    "shippingByPostalCode": [
+      {
+        "postalCode": 1,
+        "count": 23
+      },
+      {
+        "postalCode": 2,
+        "count": 23
+      },
+      {
+        "postalCode": 3,
+        "count": 26
+      },
+      {
+        "postalCode": 4,
+        "count": 65
+      },
+      {
+        "postalCode": 5,
+        "count": 34
+      },
+      {
+        "postalCode": 6,
+        "count": 76
+      },
+      {
+        "postalCode": 7,
+        "count": 64
+      },
+      {
+        "postalCode": 8,
+        "count": 23
+      },
+      {
+        "postalCode": 9,
+        "count": 54
+      },
+      {
+        "postalCode": 20,
+        "count": 23
+      },
+      {
+        "postalCode": 21,
+        "count": 54
+      },
+      {
+        "postalCode": 22,
+        "count": 76
+      },
+      {
+        "postalCode": 23,
+        "count": 23
+      },
+      {
+        "postalCode": 24,
+        "count": 64
+      },
+      {
+        "postalCode": 25,
+        "count": 54
+      },
+      {
+        "postalCode": 26,
+        "count": 76
+      },
+      {
+        "postalCode": 27,
+        "count": 98
+      }
+    ],
+    "averageShippingTimeByDestination": [
+      {
+        "destination": "Tel aviv",
+        "count": 24
+      },
+      {
+        "destination": "Mount lentils",
+        "count": 45
+      },
+      {
+        "destination": "Peth tiqua",
+        "count": 54
+      },
+      {
+        "destination": "Sons of zion",
+        "count": 34
+      },
+      {
+        "destination": "Albania",
+        "count": 77
+      },
+      {
+        "destination": "Information",
+        "count": 65
+      }
+    ],
+    "averagePaymentByLocation": [
+      {
+        "destination": "Bridge",
+        "payment": 77
+      },
+      {
+        "destination": "Tel aviv",
+        "payment": 23
+      },
+      {
+        "destination": "Sons of zion",
+        "payment": 23
+      },
+      {
+        "destination": "Mount lentils",
+        "payment": 43
+      },
+      {
+        "destination": "Garden of candelas",
+        "payment": 34
+      },
+      {
+        "destination": "Information",
+        "payment": 54
+      }
+    ]
+  },
+  "FEDEX": {
+    "companyName": "FEDEX",
+    "totalDeliveries": 923,
+    "shippingByDayOfWeek": [
+      26,
+      75,
+      97,
+      34,
+      62,
+      20,
+      90
+    ],
+    "priceByDayOfWeek": [
+      8000,
+      43958,
+      5436,
+      4000,
+      5000,
+      6543,
+      7000
+    ],
+    "shippingByDate": [
+      {
+        "date": 1,
+        "count": 54
+      },
+      {
+        "date": 2,
+        "count": 23
+      },
+      {
+        "date": 3,
+        "count": 26
+      },
+      {
+        "date": 4,
+        "count": 65
+      },
+      {
+        "date": 5,
+        "count": 34
+      },
+      {
+        "date": 6,
+        "count": 76
+      },
+      {
+        "date": 7,
+        "count": 64
+      },
+      {
+        "date": 8,
+        "count": 23
+      },
+      {
+        "date": 9,
+        "count": 54
+      },
+      {
+        "date": 10,
+        "count": 23
+      },
+      {
+        "date": 11,
+        "count": 54
+      },
+      {
+        "date": 12,
+        "count": 76
+      },
+      {
+        "date": 13,
+        "count": 23
+      },
+      {
+        "date": 14,
+        "count": 64
+      },
+      {
+        "date": 15,
+        "count": 54
+      },
+      {
+        "date": 16,
+        "count": 76
+      },
+      {
+        "date": 17,
+        "count": 98
+      },
+      {
+        "date": 18,
+        "count": 23
+      },
+      {
+        "date": 19,
+        "count": 54
+      },
+      {
+        "date": 20,
+        "count": 34
+      },
+      {
+        "date": 21,
+        "count": 23
+      },
+      {
+        "date": 22,
+        "count": 22
+      },
+      {
+        "date": 23,
+        "count": 34
+      },
+      {
+        "date": 24,
+        "count": 65
+      },
+      {
+        "date": 25,
+        "count": 54
+      },
+      {
+        "date": 26,
+        "count": 23
+      },
+      {
+        "date": 27,
+        "count": 43
+      },
+      {
+        "date": 28,
+        "count": 4
+      },
+      {
+        "date": 29,
+        "count": 23
+      },
+      {
+        "date": 30,
+        "count": 5
+      }
+    ],
+    "shippingByPostalCode": [
+      {
+        "postalCode": 31,
+        "count": 54
+      },
+      {
+        "postalCode": 32,
+        "count": 23
+      },
+      {
+        "postalCode": 33,
+        "count": 26
+      },
+      {
+        "postalCode": 34,
+        "count": 65
+      },
+      {
+        "postalCode": 35,
+        "count": 34
+      },
+      {
+        "postalCode": 36,
+        "count": 76
+      },
+      {
+        "postalCode": 37,
+        "count": 64
+      },
+      {
+        "postalCode": 38,
+        "count": 23
+      },
+      {
+        "postalCode": 39,
+        "count": 54
+      },
+      {
+        "postalCode": 20,
+        "count": 23
+      },
+      {
+        "postalCode": 21,
+        "count": 54
+      },
+      {
+        "postalCode": 22,
+        "count": 76
+      },
+      {
+        "postalCode": 23,
+        "count": 23
+      },
+      {
+        "postalCode": 24,
+        "count": 64
+      },
+      {
+        "postalCode": 25,
+        "count": 54
+      },
+      {
+        "postalCode": 26,
+        "count": 76
+      },
+      {
+        "postalCode": 27,
+        "count": 98
+      }
+    ],
+    "averageShippingTimeByDestination": [
+      {
+        "destination": "Dani",
+        "count": 24
+      },
+      {
+        "destination": "neta",
+        "count": 45
+      },
+      {
+        "destination": "chen",
+        "count": 54
+      },
+      {
+        "destination": "tamir",
+        "count": 34
+      },
+      {
+        "destination": "yuval",
+        "count": 77
+      },
+      {
+        "destination": "Labpland",
+        "count": 65
+      }
+    ],
+    "averagePaymentByLocation": [
+      {
+        "destination": "Bridge",
+        "payment": 77
+      },
+      {
+        "destination": "Tel aviv",
+        "payment": 23
+      },
+      {
+        "destination": "Sons of zion",
+        "payment": 23
+      },
+      {
+        "destination": "Mount lentils",
+        "payment": 43
+      },
+      {
+        "destination": "Garden of candelas",
+        "payment": 34
+      },
+      {
+        "destination": "Information",
+        "payment": 54
+      }
+    ]
+  }
+}
