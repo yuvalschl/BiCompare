@@ -13,7 +13,7 @@ import ShippingByPostalCode from "src/components/dashboard/ShippingByPostalCode"
 import ShippingByDestination from "src/components/dashboard/ShippingByDestination"
 import TotalDeliveries from "../components/dashboard/TotalDeliveries"
 import { useEffect, useState } from 'react';
-
+import { createApiClient } from 'src/api';
 const useStyles = makeStyles((theme) => ({
   pickers: {
     marginTop: 50
@@ -75,14 +75,17 @@ const Dashboard = () => {
 
   useEffect(() => {
       getCompanies()
-      test()
+      getIncidents()
         
   }, [])
-  const test = async ()=>{
-    let res = await fetch(`http://localhost:9090/api/data/1122332211/2020/10/DHL`)
-    res = await res.json()
+  
+  const getIncidents = async ()  =>{
+    let apiClient = createApiClient();
+    let res = await apiClient.getCourierData('DHL');
     console.log(res)
+    // parseServerResponse(res)
   }
+
   return (<>
       <Helmet>
         <title>Dashboard</title>
