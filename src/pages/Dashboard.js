@@ -172,7 +172,7 @@ const Dashboard = () => {
               lg={4}
               md={4}
               xl={4}
-              xs={4}
+              xs={12}
             >
               <ShippingDyDate data1={firstCompanyData} data2={secondCompanyData}/>
             </Grid>
@@ -181,7 +181,7 @@ const Dashboard = () => {
               lg={4}
               md={4}
               xl={4}
-              xs={4}
+              xs={12}
             >
               <ShippingByPostalCode data1={firstCompanyData} data2={secondCompanyData}/>
             </Grid>
@@ -190,7 +190,7 @@ const Dashboard = () => {
               lg={4}
               md={4}
               xl={4}
-              xs={4}
+              xs={12}
             >
               <ShippingByDestination data1={firstCompanyData} data2={secondCompanyData}/>
             </Grid>
