@@ -20,24 +20,24 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function CompanySelect({ companies ,setCompanyName, companyName}) {
+export default function CompanySelect({ inputLabel,pickingOptions ,setPickedValue, pickedValue}) {
   const classes = useStyles();
 
   const handleChange = (event) => {
     const selectedCompany = event.target.value 
-    setCompanyName(selectedCompany);
+    setPickedValue(selectedCompany);
   };
 
   return (
     <FormControl className={classes.formControl}> 
-    <InputLabel id="demo-simple-select-label">Company</InputLabel>
+    <InputLabel id="demo-simple-select-label">{inputLabel}</InputLabel>
     <Select
         labelId="demo-simple-select-label"
         id="demo-simple-select"
-        value={companyName}
+        value={pickedValue}
         onChange={handleChange}
     >
-      {companies.map(name => (
+      {pickingOptions.map(name => (
         <MenuItem  key={name} value={name}>{name}</MenuItem>
       ))}
     </Select>

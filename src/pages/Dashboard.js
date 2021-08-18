@@ -112,22 +112,43 @@ const Dashboard = () => {
               lg={2}
               md={3}
               xl={2}
-              xs={4}
+              xs={6}
               >
                 <Typography variant='h6'>First company:</Typography>
-                <CompanyPicker   companies={companies.filter((company)=>{return secondCompanyName !==company})} setCompanyName={setFirstCompanyName} companyName={firstCompanyName}/>
+                <CompanyPicker inputLabel={"Company"}   pickingOptions={companies.filter((company)=>{return secondCompanyName !==company})} setPickedValue={setFirstCompanyName} pickedValue={firstCompanyName}/>
               </Grid>
               <Grid 
               item
               lg={2}
               md={3}
               xl={2}
-              xs={4}
+              xs={6}
               >
                 <Typography variant='h6'>Second company:</Typography>
-                <CompanyPicker companies={companies.filter((company)=>{return firstCompanyName !==company})} setCompanyName={setSecondCompanyName} companyName={secondCompanyName}/>
+                <CompanyPicker inputLabel={"Company"} pickingOptions={companies.filter((company)=>{return firstCompanyName !==company})} setPickedValue={setSecondCompanyName} pickedValue={secondCompanyName}/>
+              </Grid>
+              <Grid
+                  item
+                  lg={2}
+                  md={3}
+                  xl={2}
+                  xs={6}
+              >
+                <Typography variant='h6'>Month:</Typography>
+                <CompanyPicker inputLabel={"Month"} pickingOptions={companies.filter((company)=>{return firstCompanyName !==company})} setPickedValue={setSecondCompanyName} pickedValue={secondCompanyName}/>
+              </Grid>
+              <Grid
+                  item
+                  lg={2}
+                  md={3}
+                  xl={2}
+                  xs={6}
+              >
+                <Typography variant='h6'>Year:</Typography>
+                <CompanyPicker inputLabel={"Year"} pickingOptions={companies.filter((company)=>{return firstCompanyName !==company})} setPickedValue={setSecondCompanyName} pickedValue={secondCompanyName}/>
               </Grid>
             </Grid>
+
             <Grid
               item
               lg={8}
