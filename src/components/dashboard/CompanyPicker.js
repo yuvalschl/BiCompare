@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function CompanySelect({ inputLabel,pickingOptions ,setPickedValue, pickedValue}) {
+export default function CompanySelect({ disable, inputLabel,pickingOptions ,setPickedValue, pickedValue}) {
   const classes = useStyles();
 
   const handleChange = (event) => {
@@ -36,6 +36,7 @@ export default function CompanySelect({ inputLabel,pickingOptions ,setPickedValu
         id="demo-simple-select"
         value={pickedValue}
         onChange={handleChange}
+        disabled={disable}
     >
       {pickingOptions.map(name => (
         <MenuItem  key={name} value={name}>{name}</MenuItem>
