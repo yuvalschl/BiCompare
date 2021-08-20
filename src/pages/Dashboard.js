@@ -23,7 +23,7 @@ const meta = [
   {
     year: 2020,
     month: 10,
-    couriers: ['FEDEX', 'DHL']
+    couriers: ['FEDEX', 'UPS']
   },
   {
     year: 2020,
@@ -41,7 +41,7 @@ const meta = [
     couriers: ['DHL', 'UPS']
   }
 ]
-
+let count=0
 
 const monthDict={
                   1: 'January',
@@ -59,47 +59,39 @@ const monthDict={
                 }
 const Dashboard = () => {
   const classes = useStyles()
-  const [firstCompanyName, setFirstCompanyName] = useState("")
-  const [secondCompanyName, setSecondCompanyName] = useState("")
   const [firstCompanyData, setFirstCompanyData] = useState({})
   const [secondCompanyData, setSecondCompanyData] = useState({})
-  const [companies, setCompanies] = useState([])
   const [yearOptions, setYearOptions] = useState([])
-  const [monthOptions, setMonthOptions] = useState([])
-  const [pickedYear1, setPickedYear1] = useState('')
-  const [pickedMonth1, setPickedMonth1] = useState('')
-  const [pickedYear2, setPickedYear2] = useState('')
-  const [pickedMonth2, setPickedMonth2] = useState('')
-  const [couriersInfo, setCouriersInfo] = useState({})
+  const [couriersInfo, setCouriersInfo] = useState({
+    1:{year:0, monthOptions:[],month:'', couriersOptions:[], courier:'', data:"data imported from server"},
+    2:{year:2021, monthOptions:["may","april"],pickedMonth:"may", couriersOptions:["DHL","FEDEX"],pickedCouriers:"DHL", data:"data imported from server"},
+
+  })
 
 
-  const getData = async (companyName, setData) => {
+  const getData = async (companyName, selectedRow) => {
     let res = await fetch(`http://localhost:8000/${companyName}`,{headers : { 
         'Content-Type': 'application/json',
         'Accept': 'application/json'
        }
       })
     res = await res.json()
-    setData(res)
-    // setTotalDeliveries([res[companyName].totalDeliveries, res[companyName].totalDeliveries])
+    if(selectedRow === 1){
+      setFirstCompanyData(res)
+    }else{
+      setSecondCompanyData(res)
+    }
+    console.log(res)
     return res
-  }
-
-  const getCompanies = async () =>{
-    let res = await fetch(`http://localhost:8000/db`)
-    res = await res.json()
-    let resCompanies= Object.keys(res)
-    setCompanies(resCompanies)
   }
 
   const ingestServerResponse = () =>{
     let years =[]
     Object.values(meta).forEach(data => years.push(data.year))
     setYearOptions(years)
-    getMonths(2020)
   }
 
-  const getMonths = (year) =>{
+  const setMonths = (year,selectedRow) =>{
     const yearData = Object.values(meta).filter(data =>data.year===year)
     let monthNumbers = []
     let monthStrings = []
@@ -108,45 +100,61 @@ const Dashboard = () => {
     }
     monthNumbers = monthNumbers.sort(function(a, b){return a-b})//sort array in ascending order
     monthNumbers.map(monthNum => monthStrings.push(monthDict[monthNum]))
-    setMonthOptions(monthStrings)
+    let newInfoObj= {...couriersInfo}
+    newInfoObj[selectedRow].monthOptions = monthNumbers
+    setCouriersInfo(newInfoObj)
   }
 
-  const getCouriers = (year,month) =>{
+  const setCouriers = (selectedRow, year,month) =>{
     const couriers = Object.values(meta).filter(data => data.year===year && data.month===month)[0].couriers
-    return couriers
+    let newInfoObj= {...couriersInfo}
+    newInfoObj[selectedRow].couriersOptions = couriers
+    setCouriersInfo(newInfoObj)
   }
 
 
   useEffect(() => {
-    const data = getData(secondCompanyName, setSecondCompanyData)
-  }, [secondCompanyName])
-
-  useEffect(() => {
-    getData(firstCompanyName, setFirstCompanyData)
-  }, [firstCompanyName])
-
-  useEffect(() => {
-      getCompanies()
       getIncidents()
       ingestServerResponse()
-      const obj = {
-        courier1:{name:"test1", data:"yaron"}
-      }
-      setCouriersInfo(obj)
   }, [])
 
   useEffect(() => {
-    if(couriersInfo.courier1!=undefined)
-      console.log(couriersInfo.courier1.name)
+      if(couriersInfo[1].courier !== ''){
+        getData(couriersInfo[1].courier,1)
+      }
+      if(couriersInfo[2].courier !== ''){
+        getData(couriersInfo[2].courier,2)
+      }
   }, [couriersInfo])
 
 
-  const getIncidents = async ()  =>{
+  const getIncidents = async ()  =>{//An example of how to make an api call for the server
     let apiClient = createApiClient();
     let res = await apiClient.getCourierData('DHL');
-    console.log(res)
     // parseServerResponse(res)
   }
+
+
+  const handlePickedValue = (selectorRowNum, selectorType,selectedValue) =>{//handles the change in the dropdown
+    let NewInfoObj= {...couriersInfo}
+    NewInfoObj[selectorRowNum][selectorType]=selectedValue
+    if(selectorType === 'year'){
+      setMonths(selectedValue,selectorRowNum)
+    }
+    if(selectorType ==='month'){
+      setCouriers(selectorRowNum, couriersInfo[selectorRowNum].year, selectedValue)
+    }
+    setCouriersInfo(NewInfoObj)
+  }
+
+  const checkIfUndefined = (selectorRowNumber, type)=>{//check why this works
+    return couriersInfo[selectorRowNumber]==undefined? '':couriersInfo[selectorRowNumber][type]
+  }
+
+  const getPickedValue = (selectorRowNumber,type)=>{//check why this works
+    const res = checkIfUndefined(selectorRowNumber, type)
+  }
+
 
   return (<>
       <Helmet>
@@ -177,7 +185,7 @@ const Dashboard = () => {
                   xs={6}
               >
                 <Typography variant='h6'>Year:</Typography>
-                <CompanyPicker inputLabel={"Year"} pickingOptions={yearOptions} setPickedValue={setPickedYear1} pickedValue={pickedYear1}/>
+                <CompanyPicker onChange={handlePickedValue} selectorRowNumber={1} inputLabel={"Year"} pickingOptions={yearOptions}  pickedValue={getPickedValue(1,"year")}/>
               </Grid>
               <Grid
                   item
@@ -187,7 +195,7 @@ const Dashboard = () => {
                   xs={6}
               >
                 <Typography variant='h6'>Month:</Typography>
-                <CompanyPicker disable={pickedYear1 === ''} inputLabel={"Month"} pickingOptions={monthOptions} setPickedValue={setPickedMonth1} pickedValue={pickedMonth1}/>
+                <CompanyPicker onChange={handlePickedValue} selectorRowNumber={1} disable={couriersInfo[1].year===0} inputLabel={"Month"} pickingOptions={couriersInfo[1].monthOptions}  pickedValue={getPickedValue(1,"month")}/>
               </Grid>
               <Grid
               item
@@ -197,7 +205,7 @@ const Dashboard = () => {
               xs={6}
               >
                 <Typography variant='h6'>Courier:</Typography>
-                <CompanyPicker disable={pickedMonth1 === ''} inputLabel={"Courier"}   pickingOptions={companies.filter((company)=>{return secondCompanyName !==company})} setPickedValue={setFirstCompanyName} pickedValue={firstCompanyName}/>
+                <CompanyPicker onChange={handlePickedValue} selectorRowNumber={1}  disable={couriersInfo[1].month === ''} inputLabel={"Courier"}   pickingOptions={couriersInfo[1].couriersOptions.filter((courier)=>{return couriersInfo[2].courier !== courier})} pickedValue={getPickedValue(1,"courier")}/>
               </Grid>
             </Grid>
             <Grid
@@ -213,7 +221,7 @@ const Dashboard = () => {
                   xs={6}
               >
                 <Typography variant='h6'>Year:</Typography>
-                <CompanyPicker inputLabel={"Year"} pickingOptions={yearOptions} setPickedValue={setPickedYear1} pickedValue={pickedYear1}/>
+                <CompanyPicker onChange={handlePickedValue} selectorRowNumber={2} inputLabel={"Year"} pickingOptions={yearOptions} pickedValue={getPickedValue(2,"year")}/>
               </Grid>
               <Grid
                   item
@@ -223,7 +231,7 @@ const Dashboard = () => {
                   xs={6}
               >
                 <Typography variant='h6'>Month:</Typography>
-                <CompanyPicker disable={pickedYear1 === ''} inputLabel={"Month"} pickingOptions={monthOptions} setPickedValue={setPickedMonth1} pickedValue={pickedMonth1}/>
+                <CompanyPicker onChange={handlePickedValue} selectorRowNumber={2} disable={couriersInfo[2].year===0} inputLabel={"Month"} pickingOptions={couriersInfo[2].monthOptions} pickedValue={getPickedValue(2,"month")}/>
               </Grid>
               <Grid
                   item
@@ -232,8 +240,8 @@ const Dashboard = () => {
                   xl={2}
                   xs={6}
               >
-                <Typography variant='h6'>Courier</Typography>
-                <CompanyPicker disable={pickedMonth1 === ''} inputLabel={"Courier"}   pickingOptions={companies.filter((company)=>{return firstCompanyName !==company})} setPickedValue={setSecondCompanyName} pickedValue={secondCompanyName}/>
+                <Typography variant='h6'>Courier:</Typography>
+                <CompanyPicker onChange={handlePickedValue} selectorRowNumber={2}  disable={couriersInfo[2].month === ''} inputLabel={"Courier"}   pickingOptions={couriersInfo[2].couriersOptions.filter((courier)=>{return couriersInfo[1].courier !== courier})} pickedValue={getPickedValue(2,"courier")}/>
               </Grid>
 
             </Grid>
@@ -253,7 +261,7 @@ const Dashboard = () => {
               xl={3}
               xs={12}
             >
-              <TotalDeliveries companies={[firstCompanyName,secondCompanyName]} totalDeliveries={[firstCompanyData.totalDeliveries, secondCompanyData.totalDeliveries]} sx={{ height: '100%' }} />
+              <TotalDeliveries companies={[couriersInfo[1].courier,couriersInfo[2].courier]} totalDeliveries={[firstCompanyData.totalDeliveries, secondCompanyData.totalDeliveries]} sx={{ height: '100%' }} />
             </Grid>
             <Grid
               item
