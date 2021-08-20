@@ -169,7 +169,7 @@ const Dashboard = () => {
 
   }
 
-  const getMonthsOptions = (selectorRowNum, notSelectedRowNum) =>{
+  const getMonthsOptions = (selectorRowNum, notSelectedRowNum) =>{ //this prevents the user from selecting the same month after the same year and courier is selected
     return couriersInfo[selectorRowNum].monthOptions.filter((month)=>{
       if(couriersInfo[selectorRowNum].courier === couriersInfo[notSelectedRowNum].courier){
         return couriersInfo[notSelectedRowNum].month !== month
