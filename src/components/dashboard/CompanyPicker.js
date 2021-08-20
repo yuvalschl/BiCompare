@@ -20,12 +20,12 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function CompanySelect({selectorRowNumber,onChange, disable, inputLabel,pickingOptions ,setPickedValue, pickedValue}) {
+export default function CompanySelect({selectorRowNumber, onChange, disable, inputLabel,pickingOptions , pickedValue}) {
   const classes = useStyles();
 
   const handleChange = (event) => {
     const selectedValue = event.target.value
-    onChange(selectorRowNumber, inputLabel.toLowerCase(),selectedValue)
+    onChange(selectorRowNumber,selectedValue)
     // setPickedValue(selectedValue);
   };
 

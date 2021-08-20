@@ -41,7 +41,6 @@ const meta = [
     couriers: ['DHL', 'UPS']
   }
 ]
-let count=0
 
 const monthDict={
                   1: 'January',
@@ -63,9 +62,8 @@ const Dashboard = () => {
   const [secondCompanyData, setSecondCompanyData] = useState({})
   const [yearOptions, setYearOptions] = useState([])
   const [couriersInfo, setCouriersInfo] = useState({
-    1:{year:0, monthOptions:[],month:'', couriersOptions:[], courier:'', data:"data imported from server"},
-    2:{year:2021, monthOptions:["may","april"],pickedMonth:"may", couriersOptions:["DHL","FEDEX"],pickedCouriers:"DHL", data:"data imported from server"},
-
+    1:{year:'', monthOptions:[],month:'', couriersOptions:[], courier:''},
+    2:{year:'', monthOptions:[],month:'', couriersOptions:[], courier:''},
   })
 
 
@@ -85,10 +83,11 @@ const Dashboard = () => {
     return res
   }
 
-  const ingestServerResponse = () =>{
+  const getYears = () =>{
     let years =[]
     Object.values(meta).forEach(data => years.push(data.year))
-    setYearOptions(years)
+    let yearSet = new Set(years)
+    setYearOptions([...yearSet])
   }
 
   const setMonths = (year,selectedRow) =>{
@@ -106,7 +105,7 @@ const Dashboard = () => {
   }
 
   const setCouriers = (selectedRow, year,month) =>{
-    const couriers = Object.values(meta).filter(data => data.year===year && data.month===month)[0].couriers
+    const couriers = Object.values(meta).filter(data => data.year===year && data.month===month)[0].couriers//get an array of couriers for the requested year and month
     let newInfoObj= {...couriersInfo}
     newInfoObj[selectedRow].couriersOptions = couriers
     setCouriersInfo(newInfoObj)
@@ -115,15 +114,19 @@ const Dashboard = () => {
 
   useEffect(() => {
       getIncidents()
-      ingestServerResponse()
+      getYears()
   }, [])
 
   useEffect(() => {
-      if(couriersInfo[1].courier !== ''){
+      if(couriersInfo[1].courier !== ''){//if first courier was selected get his data
         getData(couriersInfo[1].courier,1)
       }
-      if(couriersInfo[2].courier !== ''){
+      if(couriersInfo[2].courier !== ''){//if second courier was selected get his data
         getData(couriersInfo[2].courier,2)
+      }
+      if(couriersInfo[1].courier === couriersInfo[2].courier && couriersInfo[1].year === couriersInfo[2].year && couriersInfo[1].month === couriersInfo[2].month){
+        setFirstCompanyData([])
+        setSecondCompanyData([])
       }
   }, [couriersInfo])
 
@@ -131,28 +134,51 @@ const Dashboard = () => {
   const getIncidents = async ()  =>{//An example of how to make an api call for the server
     let apiClient = createApiClient();
     let res = await apiClient.getCourierData('DHL');
-    // parseServerResponse(res)
   }
 
 
-  const handlePickedValue = (selectorRowNum, selectorType,selectedValue) =>{//handles the change in the dropdown
+  const handleYearChange = (selectorRowNum, year) =>{
     let NewInfoObj= {...couriersInfo}
-    NewInfoObj[selectorRowNum][selectorType]=selectedValue
-    if(selectorType === 'year'){
-      setMonths(selectedValue,selectorRowNum)
-    }
-    if(selectorType ==='month'){
-      setCouriers(selectorRowNum, couriersInfo[selectorRowNum].year, selectedValue)
-    }
+    NewInfoObj[selectorRowNum].year = year
+    setCouriersInfo(NewInfoObj)
+    setMonths(year,selectorRowNum)
+  }
+
+  const handleMonthChange = (selectorRowNum, month) =>{
+    let NewInfoObj= {...couriersInfo}
+    NewInfoObj[selectorRowNum].month = month
+    setCouriersInfo(NewInfoObj)
+    setCouriers(selectorRowNum, couriersInfo[selectorRowNum].year, month)
+  }
+
+  const handleCourierChange = (selectorRowNum, courier) =>{
+    let NewInfoObj= {...couriersInfo}
+    NewInfoObj[selectorRowNum].courier = courier
     setCouriersInfo(NewInfoObj)
   }
 
-  const checkIfUndefined = (selectorRowNumber, type)=>{//check why this works
-    return couriersInfo[selectorRowNumber]==undefined? '':couriersInfo[selectorRowNumber][type]
+  const getCouriersOptions = (selectorRowNum, notSelectedRowNum) =>{
+     return couriersInfo[selectorRowNum].couriersOptions.filter((courier)=>{
+       if(couriersInfo[selectorRowNum].month === couriersInfo[notSelectedRowNum].month){
+         return couriersInfo[notSelectedRowNum].courier !== courier
+       }
+       else{
+         return courier
+       }
+     })
+
   }
 
-  const getPickedValue = (selectorRowNumber,type)=>{//check why this works
-    const res = checkIfUndefined(selectorRowNumber, type)
+  const getMonthsOptions = (selectorRowNum, notSelectedRowNum) =>{
+    return couriersInfo[selectorRowNum].monthOptions.filter((month)=>{
+      if(couriersInfo[selectorRowNum].courier === couriersInfo[notSelectedRowNum].courier){
+        return couriersInfo[notSelectedRowNum].month !== month
+      }
+      else{
+        return month
+      }
+    })
+
   }
 
 
@@ -185,7 +211,7 @@ const Dashboard = () => {
                   xs={6}
               >
                 <Typography variant='h6'>Year:</Typography>
-                <CompanyPicker onChange={handlePickedValue} selectorRowNumber={1} inputLabel={"Year"} pickingOptions={yearOptions}  pickedValue={getPickedValue(1,"year")}/>
+                <CompanyPicker onChange={handleYearChange} selectorRowNumber={1} inputLabel={"Year"} pickingOptions={yearOptions}  pickedValue={couriersInfo[1].year}/>
               </Grid>
               <Grid
                   item
@@ -195,7 +221,7 @@ const Dashboard = () => {
                   xs={6}
               >
                 <Typography variant='h6'>Month:</Typography>
-                <CompanyPicker onChange={handlePickedValue} selectorRowNumber={1} disable={couriersInfo[1].year===0} inputLabel={"Month"} pickingOptions={couriersInfo[1].monthOptions}  pickedValue={getPickedValue(1,"month")}/>
+                <CompanyPicker onChange={handleMonthChange} selectorRowNumber={1} disable={couriersInfo[1].year===''} inputLabel={"Month"} pickingOptions={getMonthsOptions(1,2)}  pickedValue={couriersInfo[1].month}/>
               </Grid>
               <Grid
               item
@@ -205,7 +231,7 @@ const Dashboard = () => {
               xs={6}
               >
                 <Typography variant='h6'>Courier:</Typography>
-                <CompanyPicker onChange={handlePickedValue} selectorRowNumber={1}  disable={couriersInfo[1].month === ''} inputLabel={"Courier"}   pickingOptions={couriersInfo[1].couriersOptions.filter((courier)=>{return couriersInfo[2].courier !== courier})} pickedValue={getPickedValue(1,"courier")}/>
+                <CompanyPicker onChange={handleCourierChange} selectorRowNumber={1}  disable={couriersInfo[1].month === ''} inputLabel={"Courier"}   pickingOptions={getCouriersOptions(1,2)} pickedValue={couriersInfo[1].courier}/>
               </Grid>
             </Grid>
             <Grid
@@ -221,7 +247,7 @@ const Dashboard = () => {
                   xs={6}
               >
                 <Typography variant='h6'>Year:</Typography>
-                <CompanyPicker onChange={handlePickedValue} selectorRowNumber={2} inputLabel={"Year"} pickingOptions={yearOptions} pickedValue={getPickedValue(2,"year")}/>
+                <CompanyPicker onChange={handleYearChange} selectorRowNumber={2} inputLabel={"Year"} pickingOptions={yearOptions} pickedValue={couriersInfo[2].year}/>
               </Grid>
               <Grid
                   item
@@ -231,7 +257,7 @@ const Dashboard = () => {
                   xs={6}
               >
                 <Typography variant='h6'>Month:</Typography>
-                <CompanyPicker onChange={handlePickedValue} selectorRowNumber={2} disable={couriersInfo[2].year===0} inputLabel={"Month"} pickingOptions={couriersInfo[2].monthOptions} pickedValue={getPickedValue(2,"month")}/>
+                <CompanyPicker onChange={handleMonthChange} selectorRowNumber={2} disable={couriersInfo[2].year===''} inputLabel={"Month"} pickingOptions={getMonthsOptions(2,1)} pickedValue={couriersInfo[2].month}/>
               </Grid>
               <Grid
                   item
@@ -241,7 +267,7 @@ const Dashboard = () => {
                   xs={6}
               >
                 <Typography variant='h6'>Courier:</Typography>
-                <CompanyPicker onChange={handlePickedValue} selectorRowNumber={2}  disable={couriersInfo[2].month === ''} inputLabel={"Courier"}   pickingOptions={couriersInfo[2].couriersOptions.filter((courier)=>{return couriersInfo[1].courier !== courier})} pickedValue={getPickedValue(2,"courier")}/>
+                <CompanyPicker onChange={handleCourierChange} selectorRowNumber={2}  disable={couriersInfo[2].month === ''} inputLabel={"Courier"}   pickingOptions={getCouriersOptions(2,1)} pickedValue={couriersInfo[2].courier}/>
               </Grid>
 
             </Grid>
