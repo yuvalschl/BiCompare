@@ -83,14 +83,14 @@ const Dashboard = () => {
     return res
   }
 
-  const getYears = () =>{
+  const getYears = () =>{//gets and sets all the diefferent years in state yearOptions
     let years =[]
     Object.values(meta).forEach(data => years.push(data.year))
     let yearSet = new Set(years)
     setYearOptions([...yearSet])
   }
 
-  const setMonths = (year,selectedRow) =>{
+  const setMonths = (year,selectedRow) =>{//sets the courierInf.monthOptions to the relvant month according to the yea picked
     const yearData = Object.values(meta).filter(data =>data.year===year)
     let monthNumbers = []
     let monthStrings = []
@@ -104,7 +104,7 @@ const Dashboard = () => {
     setCouriersInfo(newInfoObj)
   }
 
-  const setCouriers = (selectedRow, year,month) =>{
+  const setCouriers = (selectedRow, year,month) =>{//sets the courierInfo.couriersOptions to the relevant month according to the year and month picked
     const couriers = Object.values(meta).filter(data => data.year===year && data.month===month)[0].couriers//get an array of couriers for the requested year and month
     let newInfoObj= {...couriersInfo}
     newInfoObj[selectedRow].couriersOptions = couriers

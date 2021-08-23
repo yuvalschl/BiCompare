@@ -11,26 +11,6 @@ export const createApiClient = () => {
                 console.error(error);
             }
 		},
-        getFilteredData: async (data) => {
-			try{
-                let res = await axios.get('http://localhost:3030/getIndicentsByFilter',data)
-                return res.data
-            }
-            catch (error){
-                console.error(error);
-            }
-            
-		},
-        postIncident: async (data) => {
-			try{
-                let res = await axios.post('http://localhost:3030/addIncident',data)
-                return res.data
-            }
-            catch (error){
-                console.error(error);
-            }
-            
-		}
         
 	}
 };
