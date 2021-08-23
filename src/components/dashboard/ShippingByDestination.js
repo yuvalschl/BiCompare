@@ -2,20 +2,20 @@ import { Bar } from 'react-chartjs-2';
 import { Box, Card, CardContent, CardHeader, colors, Divider, useTheme } from '@material-ui/core';
 
 
-const ShippingDyPostalCode = ({data1, data2}) => {
+const ShippingDyDestination = ({data1, data2}) => {
   const theme = useTheme();
 
   const setData = (dataToSet) => {
     if (dataToSet !== undefined && Object.keys(dataToSet).length !== 0) {
       const res = []
-      for (const entry of dataToSet.averageShippingTimeByDestination){
+      for (const entry of dataToSet.avgDeliveryTimeByDestination){
         res.push({x: entry.destination, y: entry.count})
       }
       return res
     }
   }
 
-  function setUnionByPostalCode (A, B){
+  function setUnionByDestination (A, B){
     let a = new Set(A.map(a => a.destination));
     let b = new Set(B.map(a => a.destination));
     return [...new Set([...a, ...b])]
@@ -23,21 +23,21 @@ const ShippingDyPostalCode = ({data1, data2}) => {
 
   const data = {
     label: 'Legend Title',
-    labels: setUnionByPostalCode(data1.averageShippingTimeByDestination || [], data2.averageShippingTimeByDestination || []),
+    labels: setUnionByDestination(data1.avgDeliveryTimeByDestination || [], data2.avgDeliveryTimeByDestination || []),
     datasets: [
       {
         backgroundColor: colors.indigo[500],
         borderColor: colors.indigo[500],
         data: setData(data1),
         fill: false,
-        label: data1.companyName || ' '
+        label: data1.courierName || ' '
       },
       {
         backgroundColor: colors.blue[200],
         borderColor: colors.blue[200],
         fill: false,
         data: setData(data2),
-        label: data2.companyName || ' '
+        label: data2.courierName + " " || ' '
       }
     ],
   }
@@ -123,4 +123,4 @@ const ShippingDyPostalCode = ({data1, data2}) => {
   );
 };
 
-export default ShippingDyPostalCode;
+export default ShippingDyDestination;
