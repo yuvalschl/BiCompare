@@ -35,45 +35,15 @@ const items = [
     title: 'Dashboard'
   },
   {
-    href: '/app/customers',
+    href: '/app/monthlySummary',
     icon: UsersIcon,
-    title: 'Customers'
+    title: 'Monthly summary'
   },
   {
     href: '/app/upload',
     icon: ShoppingBagIcon,
     title: 'Upload CSV'
   },
-  // {
-  //   href: '/app/account',
-  //   icon: UserIcon,
-  //   title: 'Account'
-  // },
-  // {
-  //   href: '/app/settings',
-  //   icon: SettingsIcon,
-  //   title: 'Settings'
-  // },
-  // {
-  //   href: '/login',
-  //   icon: LockIcon,
-  //   title: 'Login'
-  // },
-  // {
-  //   href: '/register',
-  //   icon: UserPlusIcon,
-  //   title: 'Register'
-  // },
-  // {
-  //   href: '/404',
-  //   icon: AlertCircleIcon,
-  //   title: 'Error'
-  // },
-  // {
-  //   href: '/app/yuval',
-  //   icon: AlertCircleIcon,
-  //   title: 'Yuval'
-  // }
 ];
 
 const DashboardSidebar = ({ onMobileClose, openMobile }) => {

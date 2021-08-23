@@ -1,23 +1,27 @@
 {
-  "hosting": {
-    "amplifyhosting": {
-      "service": "amplifyhosting",
+  "function": {
+    "bicompare4c35f3e1PostConfirmation": {
+      "build": true,
       "providerPlugin": "awscloudformation",
-      "type": "manual"
+      "service": "Lambda"
     }
   },
   "auth": {
-    "bicompare31b2ea27": {
+    "bicompare4c35f3e1": {
       "service": "Cognito",
       "providerPlugin": "awscloudformation",
-      "dependsOn": [],
+      "dependsOn": [
+        {
+          "category": "function",
+          "resourceName": "bicompare4c35f3e1PostConfirmation",
+          "triggerProvider": "Cognito",
+          "attributes": [
+            "Arn",
+            "Name"
+          ]
+        }
+      ],
       "customAuth": false
-    }
-  },
-  "storage": {
-    "reports": {
-      "service": "S3",
-      "providerPlugin": "awscloudformation"
     }
   }
 }
