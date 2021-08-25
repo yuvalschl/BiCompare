@@ -19,12 +19,12 @@ const Sales = ({data1, data2}) => {
       {
         backgroundColor: colors.indigo[500],
         data: data1,
-        label: 'UPS'
+        label: data1.courierName || " "
       },
       {
         backgroundColor: colors.grey[500],
         data: data2,
-        label: 'DHL'
+        label: data2.courierName + " " || " "
       }
     ],
     labels: ['Sunday', 'Monday', 'Tuesday', 'Thursday', 'Friday', 'Saturday']

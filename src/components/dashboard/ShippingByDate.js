@@ -15,22 +15,16 @@ import { useEffect, useState } from 'react';
 const ShippingDyDate = ({data1, data2}) => {
   const theme = useTheme();
 
-  const setData = (data) => {
-    const res = []
-    if (Object.keys(data).length !== 0){
-      for (const entry of data.shippingByDate) {
-        res.push(entry.count)
-      }
-    }
-
-    return res
+  function getData(data) {
+    return data === undefined ? [] : data.numOfDeliveriesByDayOfMonth
   }
 
   const createDatesArray = () => {
-    const now = new Date();
-    const days = new Date(now.getFullYear(), now.getMonth()+1, 0).getDate();
+    // const now = new Date();
+    // const days = new Date(now.getFullYear(), now.getMonth()+1, 0).getDate();
+    const days = 30
     const arr = [];
-    for (var i = 1 ; i < days; i++){
+    for (let i = 1 ; i < days; i++){
       arr.push(i);
     }
 
@@ -42,15 +36,15 @@ const ShippingDyDate = ({data1, data2}) => {
     datasets: [
       {
         borderColor: colors.indigo[500],
-        data: setData(data1),
+        data: data1 === undefined ? [] : data1.numOfDeliveriesByDayOfMonth,
         fill: false,
-        label: data1.companyName || ' '
+        label: data1 === undefined ? " " : data1.courierName
       },
       {
         borderColor: colors.blue[200],
         fill: false,
-        data: setData(data2),
-        label: data2.companyName || ' '
+        data: data2 === undefined ? [] : data2.numOfDeliveriesByDayOfMonth,
+        label: data2 === undefined ? " " : data2.courierName + " "
       }
     ],
   }

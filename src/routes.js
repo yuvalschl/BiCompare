@@ -3,6 +3,7 @@ import { Navigate } from 'react-router-dom';
 import DashboardLayout from 'src/components/DashboardLayout';
 import MainLayout from 'src/components/MainLayout';
 import Dashboard from 'src/pages/Dashboard';
+import MonthlySummary from "./pages/MonthlySummary";
 
 const routes = [
   {
@@ -10,6 +11,7 @@ const routes = [
     element: <DashboardLayout />,
     children: [
       { path: 'dashboard', element: <Dashboard /> },
+      { path: 'monthlySummary', element: <MonthlySummary /> },
       { path: 'upload', element: <UploadFile/> },
       { path: '*', element: <Navigate to="/404" /> }
     ]

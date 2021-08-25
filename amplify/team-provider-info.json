@@ -1,26 +1,27 @@
 {
-    "dev": {
-        "awscloudformation": {
-            "AuthRoleName": "amplify-bicompare-dev-151541-authRole",
-            "UnauthRoleArn": "arn:aws:iam::860989133137:role/amplify-bicompare-dev-151541-unauthRole",
-            "AuthRoleArn": "arn:aws:iam::860989133137:role/amplify-bicompare-dev-151541-authRole",
-            "Region": "us-east-1",
-            "DeploymentBucketName": "amplify-bicompare-dev-151541-deployment",
-            "UnauthRoleName": "amplify-bicompare-dev-151541-unauthRole",
-            "StackName": "amplify-bicompare-dev-151541",
-            "StackId": "arn:aws:cloudformation:us-east-1:860989133137:stack/amplify-bicompare-dev-151541/61046040-ea1d-11eb-86d2-0e08a9d5c471",
-            "AmplifyAppId": "d2txvf67grqxv3"
-        },
-        "categories": {
-            "auth": {
-                "bicompare31b2ea27": {}
-            },
-            "hosting": {
-                "amplifyhosting": {
-                    "appId": "d2txvf67grqxv3",
-                    "type": "manual"
-                }
-            }
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-bicompare-dev-194737-authRole",
+      "UnauthRoleArn": "arn:aws:iam::860989133137:role/amplify-bicompare-dev-194737-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::860989133137:role/amplify-bicompare-dev-194737-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-bicompare-dev-194737-deployment",
+      "UnauthRoleName": "amplify-bicompare-dev-194737-unauthRole",
+      "StackName": "amplify-bicompare-dev-194737",
+      "StackId": "arn:aws:cloudformation:us-east-1:860989133137:stack/amplify-bicompare-dev-194737/80ebb7b0-029f-11ec-9bbc-0e205506a645",
+      "AmplifyAppId": "dcz81sgr3pidc"
+    },
+    "categories": {
+      "function": {
+        "bicompare4c35f3e1PostConfirmation": {
+          "GROUP": "BiCompare",
+          "deploymentBucketName": "amplify-bicompare-dev-194737-deployment",
+          "s3Key": "amplify-builds/bicompare4c35f3e1PostConfirmation-2f4c383776505377694f-build.zip"
         }
+      },
+      "auth": {
+        "bicompare4c35f3e1": {}
+      }
     }
+  }
 }
