@@ -1,8 +1,8 @@
 {
-    "identityPoolName": "bicompare4c35f3e1_identitypool_4c35f3e1",
+    "identityPoolName": "bicomparemain69f3b5f2_identitypool_69f3b5f2",
     "allowUnauthenticatedIdentities": false,
-    "resourceNameTruncated": "bicomp4c35f3e1",
-    "userPoolName": "bicompare4c35f3e1_userpool_4c35f3e1",
+    "resourceNameTruncated": "bicomp69f3b5f2",
+    "userPoolName": "bicomparemain69f3b5f2_userpool_69f3b5f2",
     "autoVerifiedAttributes": [
         "email"
     ],
@@ -28,10 +28,10 @@
     "userpoolClientReadAttributes": [
         "email"
     ],
-    "userpoolClientLambdaRole": "bicomp4c35f3e1_userpoolclient_lambda_role",
+    "userpoolClientLambdaRole": "bicomp69f3b5f2_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": false,
-    "sharedId": "4c35f3e1",
-    "resourceName": "bicompare4c35f3e1",
+    "sharedId": "69f3b5f2",
+    "resourceName": "bicomparemain69f3b5f2",
     "authSelections": "identityPoolAndUserPool",
     "authRoleArn": {
         "Fn::GetAtt": [
@@ -46,27 +46,14 @@
         ]
     },
     "useDefault": "default",
-    "triggers": "{\n  \"PostConfirmation\": [\n    \"add-to-group\"\n  ]\n}",
+    "triggers": "{}",
     "userPoolGroupList": [],
     "serviceName": "Cognito",
     "usernameCaseSensitive": false,
     "parentStack": {
         "Ref": "AWS::StackId"
     },
-    "authTriggerConnections": "[\n  {\n    \"triggerType\": \"PostConfirmation\",\n    \"lambdaFunctionName\": \"bicompare4c35f3e1PostConfirmation\"\n  }\n]",
     "breakCircularDependency": true,
-    "permissions": [
-        "{\n  \"policyName\": \"AddToGroupCognito\",\n  \"trigger\": \"PostConfirmation\",\n  \"effect\": \"Allow\",\n  \"actions\": [\n    \"cognito-idp:AdminAddUserToGroup\",\n    \"cognito-idp:GetGroup\",\n    \"cognito-idp:CreateGroup\"\n  ],\n  \"resource\": {\n    \"paramType\": \"!GetAtt\",\n    \"keys\": [\n      \"UserPool\",\n      \"Arn\"\n    ]\n  }\n}"
-    ],
-    "dependsOn": [
-        {
-            "category": "function",
-            "resourceName": "bicompare4c35f3e1PostConfirmation",
-            "triggerProvider": "Cognito",
-            "attributes": [
-                "Arn",
-                "Name"
-            ]
-        }
-    ]
+    "permissions": [],
+    "dependsOn": []
 }

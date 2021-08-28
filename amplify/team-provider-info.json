@@ -1,26 +1,19 @@
 {
   "dev": {
     "awscloudformation": {
-      "AuthRoleName": "amplify-bicompare-dev-194737-authRole",
-      "UnauthRoleArn": "arn:aws:iam::860989133137:role/amplify-bicompare-dev-194737-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::860989133137:role/amplify-bicompare-dev-194737-authRole",
+      "AuthRoleName": "amplify-bicomparemain-dev-174444-authRole",
+      "UnauthRoleArn": "arn:aws:iam::860989133137:role/amplify-bicomparemain-dev-174444-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::860989133137:role/amplify-bicomparemain-dev-174444-authRole",
       "Region": "us-east-1",
-      "DeploymentBucketName": "amplify-bicompare-dev-194737-deployment",
-      "UnauthRoleName": "amplify-bicompare-dev-194737-unauthRole",
-      "StackName": "amplify-bicompare-dev-194737",
-      "StackId": "arn:aws:cloudformation:us-east-1:860989133137:stack/amplify-bicompare-dev-194737/80ebb7b0-029f-11ec-9bbc-0e205506a645",
-      "AmplifyAppId": "dcz81sgr3pidc"
+      "DeploymentBucketName": "amplify-bicomparemain-dev-174444-deployment",
+      "UnauthRoleName": "amplify-bicomparemain-dev-174444-unauthRole",
+      "StackName": "amplify-bicomparemain-dev-174444",
+      "StackId": "arn:aws:cloudformation:us-east-1:860989133137:stack/amplify-bicomparemain-dev-174444/7f2b47f0-080e-11ec-a8bf-0a6046b66d41",
+      "AmplifyAppId": "d1szs69kfcvdwb"
     },
     "categories": {
-      "function": {
-        "bicompare4c35f3e1PostConfirmation": {
-          "GROUP": "BiCompare",
-          "deploymentBucketName": "amplify-bicompare-dev-194737-deployment",
-          "s3Key": "amplify-builds/bicompare4c35f3e1PostConfirmation-2f4c383776505377694f-build.zip"
-        }
-      },
       "auth": {
-        "bicompare4c35f3e1": {}
+        "bicomparemain69f3b5f2": {}
       }
     }
   }
