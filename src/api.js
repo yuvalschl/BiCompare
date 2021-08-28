@@ -6,7 +6,7 @@ if(process.env.NODE_ENV === 'development') {
 }
 
 if(process.env.NODE_ENV === 'production') {
-    url = ''
+    url = "http://ec2-3-133-98-107.us-east-2.compute.amazonaws.com:9090/api"
 }
 
 export const createApiClient = () => {

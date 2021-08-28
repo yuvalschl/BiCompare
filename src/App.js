@@ -6,7 +6,10 @@ import 'src/mixins/chartjs';
 import theme from 'src/theme';
 import routes from 'src/routes';
 import { withAuthenticator } from '@aws-amplify/ui-react'
+import Amplify, { Auth } from 'aws-amplify';
+import awsconfig from './aws-exports';
 
+Amplify.configure(awsconfig);
 const App = () => {
   const routing = useRoutes(routes);
 
@@ -18,4 +21,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default withAuthenticator(App);
