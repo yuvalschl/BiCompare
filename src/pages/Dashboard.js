@@ -21,28 +21,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 let apiClient = createApiClient();
-// const meta = [
-//   {
-//     year: 2020,
-//     month: 10,
-//     couriers: ['FEDEX', 'UPS']
-//   },
-//   {
-//     year: 2020,
-//     month: 2,
-//     couriers: ['FEDEX', 'DHL']
-//   },
-//   {
-//     year: 2021,
-//     month: 11,
-//     couriers: ['FEDEX', 'DHL', 'UPS']
-//   },
-//   {
-//     year: 2019,
-//     month: 12,
-//     couriers: ['DHL', 'UPS']
-//   }
-// ]
 
 const monthDict={
   1: 'January',
@@ -304,15 +282,15 @@ const Dashboard = () => {
               >
                 <ShippingDyDate data1={firstCompanyData} data2={secondCompanyData}/>
               </Grid>
-              {/*<Grid*/}
-              {/*  item*/}
-              {/*  lg={4}*/}
-              {/*  md={4}*/}
-              {/*  xl={4}*/}
-              {/*  xs={12}*/}
-              {/*>*/}
-              {/*  <ShippingByPostalCode data1={firstCompanyData} data2={secondCompanyData}/>*/}
-              {/*</Grid>*/}
+              <Grid
+                item
+                lg={4}
+                md={4}
+                xl={4}
+                xs={12}
+              >
+                <ShippingByPostalCode data1={firstCompanyData} data2={secondCompanyData}/>
+              </Grid>
               <Grid
                   item
                   lg={4}

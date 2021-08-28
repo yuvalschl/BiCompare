@@ -29,6 +29,15 @@ export const createApiClient = () => {
                 console.error(error);
             }
         },
+        getMonthlySummary: async (clientId, year, month) => {
+            try{
+                let res = await axios.get(`${url}data/monthly_summary/${clientId}/${year}/${month}/`)
+                return res.data
+            }
+            catch (error){
+                console.error(error);
+            }
+        },
         getFilteredData: async (data) => {
             try{
                 let res = await axios.get('http://localhost:3030/getIndicentsByFilter',data)

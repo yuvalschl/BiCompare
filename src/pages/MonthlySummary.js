@@ -9,19 +9,67 @@ import {
 import StatCard from "../components/monthlySummary/StatCard";
 import MonthlyDataGraph from "../components/monthlySummary/MonthlyDataGraph"
 import { useEffect, useState} from "react";
+import {createApiClient} from "../api";
+import CompanyPicker from "../components/dashboard/CompanyPicker";
+import DataPicker from "../components/monthlySummary/DataPicker";
 
+let apiClient = createApiClient();
 
 const Dashboard = () => {
     const [data, setData] = useState({
-        totalDomesticDeliveries: 323,
-        totalInternationalDeliveries: 54,
-        totalAmountCharged: 65,
-        averageShippingTime: 234,
-        numberOfDeliveredDestinations: 432,
-        averageDeliveriesPerDay: 543,
-        totalPaymentPerDay: [1,2,3,7,4,2,10,5,3],
-        totalDeliveriesPerDay: [12,4,54,76,23,54,23,6,2,21],
+        totalDomesticDeliveries: 0,
+        totalInternationalDeliveries: 0,
+        totalAmountCharged: 0,
+        averageShippingTime: 0,
+        numberOfDeliveredDestinations: 0,
+        averageDeliveriesPerDay: 0,
+        totalPaymentPerDay: [],
+        totalDeliveriesPerDay: [],
     })
+    const [meta, setMeta] = useState([])
+    const [year, setYear] = useState("")
+    const [yearOptions, setYearOptions] = useState([])
+    const [month, setMonth] = useState("")
+    const [monthOptions, setMonthOptions] = useState([])
+
+    const handleYearChange = (year) =>{
+        setYear(year)
+        const months = [...new Set (meta.filter(entry => entry.year === year).map(entry => entry.month))]
+        setMonthOptions(months)
+    }
+
+    const handleMonthChange = (month) =>{
+        setMonth(month)
+    }
+
+
+    useEffect(() => {
+        async function asyncUseEffect() {
+            const data = await apiClient.getMeta(1122332211)
+            setMeta(data.data)
+            const years = new Set()
+            data.data.forEach( entry => {
+                years.add(entry.year)
+            })
+
+
+            setYearOptions([...years])
+        }
+
+        asyncUseEffect()
+    },[])
+
+
+    useEffect(() => {
+        async function asyncUseEffect() {
+            if (month !== "") {
+                const data = await apiClient.getMonthlySummary(1122332211, year, month)
+                setData(data)
+            }
+        }
+
+        asyncUseEffect()
+    }, [month])
 
     return (
         <>
@@ -40,6 +88,32 @@ const Dashboard = () => {
                     spacing={3}
                     sx={{paddingTop: 3, paddingLeft: 3}}
                 >
+                    <Grid
+                        container
+                        spacing={3}
+                        sx={{paddingTop: 3, paddingLeft: 3}}
+                    >
+                        <Grid
+                            item
+                            lg={2}
+                            md={2}
+                            xl={2}
+                            xs={2}
+                        >
+                            <Typography variant='h6'>Year:</Typography>
+                            <DataPicker values={yearOptions} header="Year" onChange={handleYearChange}/>
+                        </Grid>
+                        <Grid
+                            item
+                            lg={2}
+                            md={2}
+                            xl={2}
+                            xs={2}
+                        >
+                            <Typography variant='h6'>Month:</Typography>
+                            <DataPicker values={monthOptions} header="Month" onChange={handleMonthChange}/>
+                        </Grid>
+                    </Grid>
                     <Grid
                         item
                         lg={4}

@@ -1,16 +1,5 @@
 import { Bar } from 'react-chartjs-2';
-import {
-  Box,
-  Button,
-  Card,
-  CardContent,
-  CardHeader,
-  Divider,
-  useTheme,
-  colors
-} from '@material-ui/core';
-import { useEffect, useState } from 'react';
-import objArray from 'lodash/collection';
+import { Box, Card, CardContent, CardHeader, colors, Divider, useTheme } from '@material-ui/core';
 
 
 const ShippingDyPostalCode = ({data1, data2}) => {
@@ -19,37 +8,36 @@ const ShippingDyPostalCode = ({data1, data2}) => {
   const setData = (dataToSet) => {
     if (dataToSet !== undefined && Object.keys(dataToSet).length !== 0) {
       const res = []
-      for (const entry of dataToSet.shippingByPostalCode){
-        res.push({x: entry.postalCode, y: entry.count})
+      for (const entry of dataToSet.avgDeliveryTimeByDestination){
+        res.push({x: entry.PostalCode, y: entry.count})
       }
       return res
     }
   }
 
-  function setUnionByPostalCode (A, B){
+  function setUnionByDestination (A, B){
     let a = new Set(A.map(a => a.postalCode));
     let b = new Set(B.map(a => a.postalCode));
-    const res = [...new Set([...a, ...b])]
-    return res
+    return [...new Set([...a, ...b])]
   }
 
   const data = {
     label: 'Legend Title',
-    labels: setUnionByPostalCode(data1.shippingByPostalCode || [], data2.shippingByPostalCode || []),
+    labels: setUnionByDestination(data1.avgDeliveryTimeByDestination || [], data2.avgDeliveryTimeByDestination || []),
     datasets: [
       {
         backgroundColor: colors.indigo[500],
         borderColor: colors.indigo[500],
         data: setData(data1),
         fill: false,
-        label: data1.companyName || ' '
+        label: data1.courierName || ' '
       },
       {
         backgroundColor: colors.blue[200],
         borderColor: colors.blue[200],
         fill: false,
         data: setData(data2),
-        label: data2.companyName || ' '
+        label: data2.courierName + " " || ' '
       }
     ],
   }
@@ -64,6 +52,7 @@ const ShippingDyPostalCode = ({data1, data2}) => {
     scales: {
       xAxes: [
         {
+          type: 'category',
           pointRadius: 12,
           display: true, // mandatory
           scaleLabel: {
@@ -111,26 +100,26 @@ const ShippingDyPostalCode = ({data1, data2}) => {
   };
 
   return (
-    <Card>
-      <CardHeader
-        title="Average shipping time by postal code"
-      />
-      <Divider />
-      <CardContent>
-        <Box
-          sx={{
-            height: 400,
-            position: 'relative'
-          }}
-        >
-          <Bar
-            data={data}
-            options={options}
-          />
-        </Box>
-      </CardContent>
-      <Divider />
-    </Card>
+      <Card>
+        <CardHeader
+            title="Average shipping time by Postal code"
+        />
+        <Divider />
+        <CardContent>
+          <Box
+              sx={{
+                height: 400,
+                position: 'relative'
+              }}
+          >
+            <Bar
+                data={data}
+                options={options}
+            />
+          </Box>
+        </CardContent>
+        <Divider />
+      </Card>
   );
 };
 

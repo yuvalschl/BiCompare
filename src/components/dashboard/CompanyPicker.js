@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function CompanySelect({selectorRowNumber, onChange, disable, inputLabel,pickingOptions , pickedValue}) {
+export default function CompanySelect({selectorRowNumber, onChange, disable, inputLabel, pickingOptions ,pickedValue}) {
   const classes = useStyles();
 
   const handleChange = (event) => {
