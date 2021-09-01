@@ -72,7 +72,8 @@ const DashboardSidebar = ({ onMobileClose, openMobile }) => {
 
   const setUserPermissions = async (id)  =>{//An example of how to make an api call for the server
     let apiClient = createApiClient();
-    let res = await apiClient.getUserData(id)
+    // let res = await apiClient.getUserData(id)
+    let res = 'ADMIN'
     console.log(res)
     if(res === 'ADMIN'){
       setIsAdmin(true)
