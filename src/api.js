@@ -57,7 +57,36 @@ export const createApiClient = () => {
                 console.error(error);
             }
 
-        }
+        },
+        postMonthlyData: async (data, year, month, courier) => {
+            try{
+                let res = await axios.post(`http://localhost:9090/api/data/1122332211/userId/${year}/${month}/${courier}`,data)
+                return res.status
+            }
+            catch (error){
+                console.error(error);
+            }
+
+        },
+        updateMonthlyData: async (data, year, month, courier) => {
+            try{
+                let res = await axios.put(`http://localhost:9090/api/data/1122332211/userId/${year}/${month}/${courier}`,data)
+                return res.status
+            }
+            catch (error){
+                console.error(error);
+            }
+        },
+        deleteMonthlyData: async (year, month, courier) => {
+            try{
+                let res = await axios.delete(`http://localhost:9090/api/data/1122332211/userId/${year}/${month}/${courier}`)
+                return res.status
+            }
+            catch (error){
+                console.error(error);
+            }
+        },
+
 
     }
 };

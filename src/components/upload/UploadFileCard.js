@@ -33,11 +33,12 @@ export default function UploadFileCard({handleUploadClick, setIsUpdate, setIsNew
   const [uploadType, setUploadType] = useState('')
   const [isRequiredNotFilled, setIsRequiredNotFilled] = useState(true)
   const [year, setYear] = useState(undefined)
+  const [courier, setCourier] = useState('')
 
 
     useEffect(() => {
       validateRequiredFields()
-    }, [fileName,uploadType, month, year])
+    }, [fileName,uploadType, month, year,courier])
 
 
  const renderFileName = () =>{
@@ -74,20 +75,25 @@ export default function UploadFileCard({handleUploadClick, setIsUpdate, setIsNew
       setYear(event.target.value)
     }
   }
+    const handleCourier = (event)=>{
+        const courierInput = event.target.value
+        setCourier(courierInput.toUpperCase())
+    }
 
   const validateRequiredFields = ()=>{
-    if(month !== '' && year !=undefined && uploadType !==''){
+    if(month !== '' && year !=undefined && uploadType !==''&& courier !=='' && fileName !==''){
       setIsRequiredNotFilled(false)
     }
   }
 
   const handleUpload =() =>{
-    handleUploadClick(year, month, uploadType)
+    handleUploadClick(year, month, uploadType, courier)
   }
 
 
   const handleInput = (event) =>{
-    event.target.value = Math.max(0, parseInt(event.target.value) ).toString().slice(0,4)
+      event.target.value = Math.max(0, parseInt(event.target.value) ).toString().slice(0,4)
+
   }
 
 
@@ -108,6 +114,9 @@ export default function UploadFileCard({handleUploadClick, setIsUpdate, setIsNew
       </Box>
       <CardContent>
         <Grid container spacing={3}>
+            <Grid item lg={3}>
+                <TextField onChange={handleCourier}   type="text" id="standard-required" label="courier" placeholder="courier" />
+            </Grid>
           <Grid item lg={3}>
             <TextField onChange={handleYear} onInput={handleInput}  type="number" id="standard-required" label="year" placeholder="2021" />
           </Grid>
@@ -139,12 +148,13 @@ export default function UploadFileCard({handleUploadClick, setIsUpdate, setIsNew
                 >
                 <MenuItem  value={"new"}>New</MenuItem>
                 <MenuItem  value={"update"}>Update</MenuItem>
+                <MenuItem  value={"delete"}>Delete</MenuItem>
                 </Select>
             </FormControl>
           </Grid>
+
           <Grid item lg={12}>
             <MyDropZone setFile={setFile} setIsFileValid={setIsFileValid} setFileName={setFileName}/>
-          
           </Grid>
           <Grid item lg={12}>
             {renderFileName()}
