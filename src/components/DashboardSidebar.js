@@ -70,7 +70,7 @@ const DashboardSidebar = ({ onMobileClose, openMobile }) => {
   const [isAdmin, setIsAdmin] = useState(false)
 
 
-  const setUserPermissions = async (id)  =>{//An example of how to make an api call for the server
+  const setUserPermissions = async (id)  =>{
     let apiClient = createApiClient();
     // let res = await apiClient.getUserData(id)
     let res = 'ADMIN'
