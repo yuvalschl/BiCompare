@@ -1,6 +1,7 @@
 import {useEffect, useState} from 'react';
 import { Link as RouterLink, useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import Amplify, { Auth } from 'aws-amplify';
 import {
   Avatar,
   Box,
@@ -73,7 +74,9 @@ const DashboardSidebar = ({ onMobileClose, openMobile }) => {
   const setUserPermissions = async (id)  =>{
     let apiClient = createApiClient();
     // let res = await apiClient.getUserData(id)
-    let res = 'ADMIN'
+    const res = await Auth.currentUserInfo()
+    console.log(res)
+    // let res = 'ADMIN'
     console.log(res)
     if(res === 'ADMIN'){
       setIsAdmin(true)
