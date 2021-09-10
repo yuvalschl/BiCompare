@@ -14,6 +14,7 @@ import ShippingByDestination from "src/components/dashboard/ShippingByDestinatio
 import TotalDeliveries from "../components/dashboard/TotalDeliveries"
 import { useEffect, useState } from 'react';
 import { createApiClient } from 'src/api';
+import PriceByDestenation from "../components/dashboard/PriceByDestenation";
 const useStyles = makeStyles((theme) => ({
   pickers: {
     marginTop: 50
@@ -257,16 +258,25 @@ const Dashboard = () => {
               </Grid>
               <Grid
                   item
-                  lg={8}
+                  lg={4}
                   md={12}
-                  xl={9}
+                  xl={4}
                   xs={12}
               >
                 <ShippingByDay data1={firstCompanyData.numOfDeliveriesByDayOfTheWeek || []} data2={secondCompanyData.numOfDeliveriesByDayOfTheWeek || []} />
               </Grid>
               <Grid
                   item
-                  lg={4}
+                  lg={5}
+                  md={6}
+                  xl={5}
+                  xs={12}
+              >
+                <PriceByDestenation data1={firstCompanyData} data2={secondCompanyData}/>
+              </Grid>
+              <Grid
+                  item
+                  lg={3}
                   md={6}
                   xl={3}
                   xs={12}

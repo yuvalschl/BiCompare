@@ -31,6 +31,7 @@ const monthlyDataGraph = ({header, monthlyData}) => {
         borderColor: colors.indigo[500],
         data: monthlyData,
         fill: false,
+        label: header
       }
     ],
   }
