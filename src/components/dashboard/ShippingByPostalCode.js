@@ -8,7 +8,7 @@ const ShippingDyPostalCode = ({data1, data2}) => {
   const setData = (dataToSet) => {
     if (dataToSet !== undefined && Object.keys(dataToSet).length !== 0) {
       const res = []
-      for (const entry of dataToSet.avgDeliveryTimeByDestination){
+      for (const entry of dataToSet.deliveryInfosByDestination){
         res.push({x: entry.PostalCode, y: entry.count})
       }
       return res
@@ -23,7 +23,7 @@ const ShippingDyPostalCode = ({data1, data2}) => {
 
   const data = {
     label: 'Legend Title',
-    labels: setUnionByDestination(data1.avgDeliveryTimeByDestination || [], data2.avgDeliveryTimeByDestination || []),
+    labels: setUnionByDestination(data1.deliveryInfosByDestination || [], data2.deliveryInfosByDestination || []),
     datasets: [
       {
         backgroundColor: colors.indigo[500],
