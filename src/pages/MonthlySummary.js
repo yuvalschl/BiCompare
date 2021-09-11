@@ -121,7 +121,7 @@ const Dashboard = () => {
                         xl={4}
                         xs={4}
                     >
-                        <StatCard header="Total Local Deliveries" value={data.totalDomesticDeliveries}/>
+                        <StatCard header="Total Domestic Deliveries" value={data.totalDomesticDeliveries}/>
                     </Grid>
                     <Grid
                         item
@@ -130,7 +130,7 @@ const Dashboard = () => {
                         xl={4}
                         xs={4}
                     >
-                        <StatCard header="Total International deliveries" value={data.totalInternationalDeliveries}/>
+                        <StatCard header="Total International Deliveries" value={data.totalInternationalDeliveries}/>
                     </Grid>
                     <Grid
                         item
@@ -139,7 +139,7 @@ const Dashboard = () => {
                         xl={4}
                         xs={4}
                     >
-                        <StatCard header="Total Amount Payed" value={data.totalAmountCharged}/>
+                        <StatCard header="Total Amount Payed (USD)" value={data.totalAmountCharged}/>
                     </Grid>
                     <Grid
                         item
@@ -148,7 +148,7 @@ const Dashboard = () => {
                         xl={4}
                         xs={4}
                     >
-                        <StatCard header="Average shipping Time" value={data.averageShippingTime}/>
+                        <StatCard header="Average Shipping Time (Days)" value={data.averageShippingTime}/>
                     </Grid>
                     <Grid
                         item
@@ -157,7 +157,7 @@ const Dashboard = () => {
                         xl={4}
                         xs={4}
                     >
-                        <StatCard header="Number of Delivered Destinations" value={data.numberOfDeliveredDestinations}/>
+                        <StatCard header="Number Of Delivered Destinations" value={data.numberOfDeliveredDestinations}/>
                     </Grid>
                     <Grid
                         item
@@ -166,7 +166,7 @@ const Dashboard = () => {
                         xl={4}
                         xs={4}
                     >
-                        <StatCard header="Average number of Delivers Per Day" value={data.averageDeliveriesPerDay}/>
+                        <StatCard header="Average Number Of Delivers Per Day" value={data.averageDeliveriesPerDay}/>
                     </Grid>
                     <Grid
                         item

@@ -81,9 +81,24 @@ export default function UploadFileCard({handleUploadClick, setIsUpdate, setIsNew
     }
 
   const validateRequiredFields = ()=>{
-    if(month !== '' && year !=undefined && uploadType !==''&& courier !=='' && fileName !==''){
-      setIsRequiredNotFilled(false)
-    }
+      if(uploadType === 'new' || uploadType ==='update') {
+          if (month !== '' && year != undefined && uploadType !== '' && courier !== '' && fileName !== '') {
+              setIsRequiredNotFilled(false)
+          }
+          else{
+              setIsRequiredNotFilled(true)
+
+          }
+      }
+      else{
+          if (month !== '' && year != undefined && uploadType !== '' && courier !== '') {
+              setIsRequiredNotFilled(false)
+          }else
+          {
+              setIsRequiredNotFilled(true)
+
+          }
+      }
   }
 
   const handleUpload =() =>{
@@ -103,7 +118,7 @@ export default function UploadFileCard({handleUploadClick, setIsUpdate, setIsNew
         <Grid container>
           <Grid item lg={11}>
             <Typography paddingLeft='1%' variant="h2" component="h2">
-              Upload file
+              Manage data
             </Typography>
           </Grid>
           <Grid item justifySelf="flex-end" lg={1}>
@@ -162,7 +177,7 @@ export default function UploadFileCard({handleUploadClick, setIsUpdate, setIsNew
         </Grid>
       </CardContent>
       <CardActions>
-            <Button disabled={isRequiredNotFilled} onClick={handleUpload} className='btn'>Upload</Button>
+            <Button disabled={isRequiredNotFilled} onClick={handleUpload} className='btn'>Submit</Button>
       </CardActions>
     </Card>
   );

@@ -24,11 +24,6 @@ import {
 import NavItem from './NavItem';
 import {createApiClient} from "../api";
 
-const user = {
-  avatar: '/static/images/avatars/neta.jpg',
-  jobTitle: '',
-  name: 'Neta Sharon'
-};
 
 // let items = [
 //   {
@@ -67,18 +62,21 @@ const DashboardSidebar = ({ onMobileClose, openMobile }) => {
     //   title: 'Upload CSV'
     // },
   ])
-
+  const [user, setUserName] = useState( {
+        avatar: '',
+        jobTitle: '',
+        name: 'Loading...'
+    }
+  )
+  // '/static/images/avatars/neta.jpg'
   const [isAdmin, setIsAdmin] = useState(false)
 
 
   const setUserPermissions = async (id)  =>{
     let apiClient = createApiClient();
-    // let res = await apiClient.getUserData(id)
-    const res = await Auth.currentUserInfo()
-    console.log(res)
-    // let res = 'ADMIN'
-    console.log(res)
-    if(res === 'ADMIN'){
+    let role = await apiClient.getUserData(id)
+    console.log(role)
+    if(role === 'ADMIN'|| role === 'OWNER'){
       setIsAdmin(true)
       setItems([
         {
@@ -94,7 +92,7 @@ const DashboardSidebar = ({ onMobileClose, openMobile }) => {
         {
           href: '/app/upload',
           icon: ShoppingBagIcon,
-          title: 'Upload CSV'
+          title: 'Manage data'
         },
       ])
     }
@@ -102,7 +100,16 @@ const DashboardSidebar = ({ onMobileClose, openMobile }) => {
 
 
   useEffect(async () => {
-    await setUserPermissions('userId69')
+      const auth = await Auth.currentUserInfo()
+      const id = auth.id
+      let userName = auth.username
+      userName = userName.charAt(0).toUpperCase() + userName.slice(1)
+      setUserName({
+          avatar: `/static/images/avatars/${userName}.jpg`,
+          jobTitle: '',
+          name: userName
+      })
+      await setUserPermissions(id)
     if (openMobile && onMobileClose) {
       onMobileClose();
     }

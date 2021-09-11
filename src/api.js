@@ -38,29 +38,9 @@ export const createApiClient = () => {
                 console.error(error);
             }
         },
-        getFilteredData: async (data) => {
-            try{
-                let res = await axios.get('http://localhost:3030/getIndicentsByFilter',data)
-                return res.data
-            }
-            catch (error){
-                console.error(error);
-            }
-
-        },
-        postIncident: async (data) => {
-            try{
-                let res = await axios.post('http://localhost:3030/addIncident',data)
-                return res.data
-            }
-            catch (error){
-                console.error(error);
-            }
-
-        },
         postMonthlyData: async (data, year, month, courier) => {
             try{
-                let res = await axios.post(`http://localhost:9090/api/data/1122332211/userId/${year}/${month}/${courier}`,data)
+                let res = await axios.post(`http://localhost:9090/api/data/1122332211/us-east-1:e9fe86c4-1583-48bf-8e40-d73b8c61c60a/${year}/${month}/${courier}`,data)
                 return res.status
             }
             catch (error){
@@ -70,7 +50,7 @@ export const createApiClient = () => {
         },
         updateMonthlyData: async (data, year, month, courier) => {
             try{
-                let res = await axios.put(`http://localhost:9090/api/data/1122332211/userId/${year}/${month}/${courier}`,data)
+                let res = await axios.put(`http://localhost:9090/api/data/1122332211/us-east-1:e9fe86c4-1583-48bf-8e40-d73b8c61c60a/${year}/${month}/${courier}`,data)
                 return res.status
             }
             catch (error){
@@ -79,14 +59,22 @@ export const createApiClient = () => {
         },
         deleteMonthlyData: async (year, month, courier) => {
             try{
-                let res = await axios.delete(`http://localhost:9090/api/data/1122332211/userId/${year}/${month}/${courier}`)
+                let res = await axios.delete(`http://localhost:9090/api/data/1122332211/us-east-1:e9fe86c4-1583-48bf-8e40-d73b8c61c60a/${year}/${month}/${courier}`)
                 return res.status
             }
             catch (error){
                 console.error(error);
             }
         },
-
+        getUserData: async (id) =>{
+            try{
+                let res = await axios.get(`http://localhost:9090/api/users/role/${id}`)
+                return res.data
+            }
+            catch (error){
+                console.error(error);
+            }
+        }
 
     }
 };
