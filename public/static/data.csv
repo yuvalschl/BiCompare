@@ -1,0 +1,9 @@
+domestic,shipmentDate,shipmentDeliveryDate,shipperCompanyName,shipperAddress,shipperCity,shipperPostalCode,shipperCountry,amountCharged,currencyCode,weight,recipientCompanyName,recipientAddress,recipientCity,recipientCountry,recipientPostalCode
+0,16/10/2020,17/10/2020,Y.T.D Inc,Menachem Begin 13,Tel Aviv,6000,IL,199.6,USD,9,Facebook IE,Oak st. 17,Dublin,IE,21363
+0,22/10/2020,25/10/2020,Y.T.D Inc,Menachem Begin 13,Tel Aviv,6000,IL,124.36,USD,2,Facebook IE,Oak st. 18,Dublin,IE,21364
+0,22/10/2020,24/10/2020,Y.T.D Inc,Menachem Begin 13,Tel Aviv,6000,IL,304.57,USD,7.8,Facebook IE,Oak st. 19,Dublin,IE,21365
+0,22/10/2020,25/10/2020,Y.T.D Inc,Menachem Begin 13,Tel Aviv,6000,IL,388.13,USD,17.8,Facebook IE,Oak st. 20,Dublin,IE,21366
+0,23/10/2020,24/10/2020,Y.T.D Inc,Menachem Begin 13,Tel Aviv,6000,IL,189.25,USD,8,Facebook IE,Oak st. 21,Dublin,IE,21367
+0,23/10/2020,25/10/2020,Y.T.D Inc,Menachem Begin 13,Tel Aviv,6000,IL,218.74,USD,14,Facebook IE,Oak st. 22,Dublin,IE,21368
+0,23/10/2020,29/10/2020,Y.T.D Inc,Menachem Begin 13,Tel Aviv,6000,IL,273.55,USD,30,Facebook IE,Oak st. 23,Dublin,IE,21369
+0,23/10/2020,25/10/2020,Y.T.D Inc,Menachem Begin 13,Tel Aviv,6000,IL,227.59,USD,15,Facebook IE,Oak st. 24,Dublin,IE,21370
