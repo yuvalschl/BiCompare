@@ -11,10 +11,10 @@ import ShippingDyDate from "src/components/dashboard/ShippingByDate";
 import CompanyPicker from "src/components/dashboard/CompanyPicker"
 import ShippingByPostalCode from "src/components/dashboard/ShippingByPostalCode"
 import ShippingByDestination from "src/components/dashboard/ShippingByDestination"
+import PriceByDestenation from "src/components/dashboard/PriceByDestenation"
 import TotalDeliveries from "../components/dashboard/TotalDeliveries"
 import { useEffect, useState } from 'react';
 import { createApiClient } from 'src/api';
-import PriceByDestenation from "../components/dashboard/PriceByDestenation";
 const useStyles = makeStyles((theme) => ({
   pickers: {
     marginTop: 50
@@ -285,27 +285,27 @@ const Dashboard = () => {
               </Grid>
               <Grid
                   item
-                  lg={4}
-                  md={4}
-                  xl={4}
+                  lg={6}
+                  md={6}
+                  xl={6}
                   xs={12}
               >
                 <ShippingDyDate data1={firstCompanyData} data2={secondCompanyData}/>
               </Grid>
-              <Grid
-                item
-                lg={4}
-                md={4}
-                xl={4}
-                xs={12}
-              >
-                <ShippingByPostalCode data1={firstCompanyData} data2={secondCompanyData}/>
-              </Grid>
+              {/*<Grid*/}
+              {/*  item*/}
+              {/*  lg={4}*/}
+              {/*  md={4}*/}
+              {/*  xl={4}*/}
+              {/*  xs={12}*/}
+              {/*>*/}
+              {/*  <ShippingByPostalCode data1={firstCompanyData} data2={secondCompanyData}/>*/}
+              {/*</Grid>*/}
               <Grid
                   item
-                  lg={4}
-                  md={4}
-                  xl={4}
+                  lg={6}
+                  md={6}
+                  xl={6}
                   xs={12}
               >
                 <ShippingByDestination data1={firstCompanyData} data2={secondCompanyData}/>

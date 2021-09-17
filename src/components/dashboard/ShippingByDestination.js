@@ -13,6 +13,7 @@ const ShippingDyDestination = ({data1, data2}) => {
       }
       return res
     }
+
   }
 
   function setUnionByDestination (A, B){
